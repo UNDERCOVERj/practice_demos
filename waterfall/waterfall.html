@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0}
+        #main{position: relative}
+        .pin{padding: 10px 0 0 10px;float: left}
+        .pic{padding: 10px;border: 1px solid #ccc;border-radius: 5px;box-shadow: 0 0 6px #ccc}
+        img{width: 165px;height: auto}
+    </style>
+    <script>
+        window.onload= function () {
+            waterfall('main','pin');
+            var dataInt={'data':[{'src':'1.jpg'},{'src':'2.jpg'},{'src':'3.jpg'},{'src':'4.jpg'}]};
+            window.onscroll= function () {
+                if(compare('main','pin')){
+                    var parent=document.getElementById('main');
+                    for(var i=0;i<dataInt.data.length;i++){
+                        var xpin=document.createElement('div');
+                        xpin.className='pin';
+                        parent.appendChild(xpin);
+                        var xpic=document.createElement('div');
+                        xpic.className='pic';
+                        xpin.appendChild(xpic);
+                        var ximg=document.createElement('img');
+                        ximg.src='img/'+dataInt.data[i].src;
+                        xpic.appendChild(ximg);
+                    }
+                    waterfall('main','pin')
+
+                }
+            }
+
+        }
+        function waterfall(parent,pin){
+            var oParent=document.getElementById(parent);
+            var oPin=getClass(oParent,pin);
+            var pinwidth=oPin[0].offsetWidth;
+            var num=Math.floor(document.documentElement.clientWidth/pinwidth);
+            oParent.style.cssText='width:'+num*pinwidth+'px;margin:0 auto;';
+            var widtharray=[];
+            for(var i=0;i<oPin.length;i++){
+                if(i<6){
+                    widtharray[i]=oPin[i].offsetHeight;
+                }else{
+                    var minHeight=getMinHeight(widtharray);
+                    var minHeightNum=getMinHeightNum(widtharray,minHeight);
+                    oPin[i].style.position='absolute';
+                    oPin[i].style.top=minHeight+'px';
+                    oPin[i].style.left=oPin[minHeightNum].offsetLeft+'px';
+                    widtharray[minHeightNum]+=oPin[i].offsetHeight;
+                }
+            }
+        }
+        function getClass(Parent,className){
+            var a=[];
+            var all=Parent.getElementsByTagName('*');
+            for(var i=0;i<all.length;i++){
+                if(all[i].className==className){
+                    a.push(all[i]);
+                }
+            }
+            return a;
+        }
+        function getMinHeight(a){
+            var temp=a[0];
+            for(var i=1;i< a.length;i++){
+                if(a[i]<temp){
+                    temp=a[i];
+                }
+            }
+            return temp;
+        }
+        function getMinHeightNum(m,n){
+            for(var i=0;i< m.length;i++){
+                if(m[i]==n){
+                    return i;
+                }
+            }
+        }
+        function compare(parent,pin){
+            var oParent=document.getElementById(parent);
+            var last=getClass(oParent,pin);
+            var top=last[last.length-1].offsetTop+Math.floor(last[last.length-1].offsetHeight/2);
+            var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+            var bodyH=document.body.clientHeight||document.documentElement.clientHeight;
+            return (top<scrollTop+bodyH)?true:false;
+        }
+    </script>
+</head>
+<body>
+<div id="main">
+    <div class="pin">
+        <div class="pic">
+            <img src="img/0.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/1.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/2.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/3.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/4.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/5.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/6.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/7.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/8.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/9.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/10.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/11.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/12.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/13.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/14.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/15.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/16.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/17.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/18.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/19.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/20.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/21.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/22.jpg"/>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="pic">
+            <img src="img/23.jpg"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

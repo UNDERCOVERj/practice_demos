@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>知乎-与世界分享你的知识</title>
+    <style>
+        body{margin: 0;padding: 0;background: #f7fafc;text-align: center;font-family: 'Helvetica' }
+        #top{background: url("img/top.png") no-repeat;width: 160px;height: 74px;margin:0px auto 25px;}
+        h2{font-weight: 400;font-size: 18px;}
+        h2 .h{display: inline-block;padding: 5px 10px;color:#86a7ca;cursor: pointer;}
+        form{margin: 0 auto;width: 301px ;padding: 0px;border: 0.2px solid #d5d5d5;border-radius: 0.5px}
+        .input_1{width: 280px;height: 47px;border:0.2px solid #d5d5d5;display: block;margin:0 auto;color: #555;padding-left: 18px}
+        .input_img{display: block;height: 47px;line-height: 47px;border:0.2px solid #d5d5d5; }
+        .input_else{display: inline-block;height: 41px;float: left;border: none;padding-left: 18px;width: 160px}
+        .input_img img{display: inline-block;float: right}
+        [type='submit']{background: #0f88eb;float: left;margin:20px auto;color: white;cursor: pointer;text-align: center;width: 302px;height: 47px;border: none}
+        p{font-size: 13px;clear: both;color: #999;}
+        p a{text-decoration: none}
+        .download{cursor: pointer;border-radius:3px;text-align: center;width: 302px;height: 41px;line-height:41px;margin: 20px auto 10px;color: #5fa6e5;border: 1px solid #96c2e9;border-radius: 3px;}
+        .footer{font-size: 12px;line-height: 42px;text-align: center;}
+        .footer a{text-decoration: none;color:#555;}
+        .footer a:hover{text-decoration: underline}
+        .footer span{color:#555;}
+        .middle{height: 24px;width: 300px;clear: both;margin: 0 auto;font-size: 13px;margin-top:20px}
+        .middle label{float: left;}
+        .middle a{float: right;text-decoration: none;color: #555;}
+        #sociallog{position: relative;margin: 10px auto;text-align: left;width: 300px}
+        #sociallog span{ font-size: 13px;  color: #555;height:28px;line-height:28px;position: absolute;}
+        #sociallog a{display: inline-block;margin-left: 2px;width: 28px;height: 28px}
+        #sociallog .share_1{background: url("img/share.jpg") no-repeat 0 0;margin-left: 85px }
+        #sociallog .share_2{background: url("img/share.jpg") no-repeat -33px 0 }
+        #sociallog .share_3{background: url("img/share.jpg") no-repeat -66px 0 }
+        #sociallog .share_4{background: url("img/share.jpg") no-repeat -99px 0 }
+        #sociallog .share_5{background: url("img/share.jpg") no-repeat -133px 0 }
+        #sociallog .share_1:hover{background: url("img/share.jpg") no-repeat 0 -28px; margin-left: 85px}
+        #sociallog .share_2:hover{background: url("img/share.jpg") no-repeat -33px -28px; }
+        #sociallog .share_3:hover{background: url("img/share.jpg") no-repeat -66px -28px }
+        #sociallog .share_4:hover{background: url("img/share.jpg") no-repeat -99px -28px }
+        #sociallog .share_5:hover{background: url("img/share.jpg") no-repeat -133px -28px }
+    </style>
+    <script>
+        window.onload= function () {
+            var log=document.getElementById('log');
+            var register=document.getElementById('register');
+            var span=document.getElementsByClassName('h');
+            document.form1.foothover.onmouseover= function () {
+                this.style.background='#55abed'
+            }
+            document.form1.foothover.onmouseout= function () {
+                this.style.background='#0f88eb';
+            }
+            document.form2.foothover.onmouseover= function () {
+                this.style.background='#55abed'
+            }
+            document.form2.foothover.onmouseout= function () {
+                this.style.background='#0f88eb';
+            }
+            span[0].style.borderBottom = '1px solid';
+            span[0].onclick= function () {
+                log.style.display = 'block';
+                register.style.display = 'none';
+                span[0].style.borderBottom = '1px solid';
+                span[1].style.borderBottom = 'none'
+            }
+            span[1].onclick= function (){
+                log.style.display='none';
+                register.style.display='block';
+                span[1].style.borderBottom='1px solid';
+                span[0].style.borderBottom='none'
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="top"></div>
+<h2>与世界分享你的知识、经验和见解</h2>
+<h2>
+    <span class="h">注册</span>
+    <span class="h">登录</span>
+</h2>
+<div id="log" style="display: block">
+<form name="form1">
+    <input type="text" placeholder="姓名" name="user" class="input_1">
+    <input type="text" placeholder="手机号(只支持中国大陆)" name="phone" class="input_1">
+    <input type="password" placeholder="密码(不少于6位)" name="pwd" class="input_1">
+    <div class="input_img">
+        <input type="text" placeholder="验证码" name="" class="input_else">
+        <img   src="img/captcha.gif" height="47" width="120">
+    </div>
+    <input type="submit" value="注册知乎" name="foothover">
+</form>
+<p>点击「注册」按钮，即代表你同意<a href="#">《知乎协议》</a> </p>
+<div class="download">下载知乎app</div>
+</div>
+<div id="register" style="display: none">
+    <form name="form2">
+        <input type="text" placeholder="手机号或邮箱" class="input_1">
+        <input type="text" placeholder="密码"  class="input_1">
+        <input type="submit" value="登录" name="foothover">
+    </form>
+    <div class="middle">
+        <label><input type="checkbox" checked="checked"/>记住我</label>
+        <a href="#">无法登录?</a>
+    </div>
+    <div id="sociallog">
+        <span>社交账号登录&nbsp;</span>
+        <a href="#" class="share_1"></a>
+        <a href="#" class="share_2"></a>
+        <a href="#" class="share_3"></a>
+        <a href="#" class="share_4"></a>
+        <a href="#" class="share_5"></a>
+    </div>
+    <div class="download">下载知乎app</div>
+</div>
+<div class="footer" >
+    <span>© 2016 知乎</span>
+    <span class="dot">·</span>
+    <a target="_blank" href="/roundtable">知乎圆桌</a>
+    <span class="dot">·</span>
+    <a target="_blank" href="/explore" data-za-c="explore" data-za-a="visit_explore" data-za-l="home_bottom_explore">发现</a>
+    <span class="dot">·</span>
+    <a target="_blank" href="/app">移动应用</a>
+    <span class="dot">·</span>
+    <a href="/org/signin" class="footer-mobile-show">使用机构帐号登录</a>
+    <span class="dot footer-mobile-show">·</span>
+    <a href="/contact" class="footer-mobile-show">联系我们</a>
+    <span class="dot">·</span>
+    <a target="_blank" href="/careers">来知乎工作</a>
+    <span class="dot">·</span>
+    <a href="http://www.miibeian.gov.cn/" target="_blank">京 ICP 备 13052560 号</a>
+    <span class="dot">·</span>
+    <span>京公网安备 11010802010035 号</span>
+</div>
+</body>
+</html>

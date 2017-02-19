@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0}
+        #wrapper ul{list-style-type: none}
+        #wrapper{position: relative;border:1px solid red}/*设置宽高*/
+        #wrapper #banner{position: relative;overflow: hidden;border: 2px solid black;}/*设置宽高*/
+        #wrapper .imgList{position:relative;z-index: 10;overflow: hidden;}/*设置宽高*/
+        #wrapper .imgList li{float: left;}/*宽高*/
+        #wrapper #prev{background:url("img/btn_l.png") no-repeat center center;position: absolute;z-index: 20;opacity: 0.5;cursor: pointer}/*设置位置*/
+        #wrapper #next{background:url("img/btn_r.png") no-repeat center center;position: absolute;z-index: 20;opacity: 0.5;cursor: pointer}/*需设置hover*/
+        #wrapper #prev:hover{opacity:1}
+        #wrapper #next:hover{opacity:1}
+        #wrapper .indexList{position: absolute;bottom: 0;z-index: 20;}/*需设置居中*/
+        #wrapper .indexList li{width: 20px;height: 20px;background: grey;float: left;margin: 4px;border-radius: 10px; text-indent: -9999px;cursor: pointer}
+        #wrapper .indexList .indexOn{background: black}
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="banner">
+        <ul class="imgList">
+            <li><a href="#"><img src="img/image1.jpg"/> </a> </li>
+            <li><a href="#"><img src="img/image2.jpg"/> </a> </li>
+            <li><a href="#"><img src="img/image3.jpg"/> </a> </li>
+            <li><a href="#"><img src="img/image4.jpg"/> </a> </li>
+        </ul>
+        <div id="prev" ></div>
+        <div id="next" ></div>
+        <ul class="indexList">
+            <li class="indexOn">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+</div>
+
+<script src="jq.js"></script>
+<script>
+
+    $(function () {
+        new Poster();
+        function Poster(){
+            var data={
+                imgWidth:300,
+                imgHeight:300,
+                wrapperWidth:1000,
+                wrapperHeight:1000,
+                bannerWidth:300,
+                bannerHeight:300,
+                btnWidth:50,
+                btnHeight:100,
+                duration:2500
+            };
+            var curIndex=0;
+            var imgLen=$('.imgList img').length;
+            var autoChange=setInterval(setInter,data.duration)
+            function setInter(){
+                if(curIndex<imgLen-1){
+                    curIndex++;
+                }else{
+                    curIndex=0;
+                }
+                changeTo(curIndex);
+            }
+            function autoChangeAgain(){
+                autoChange=setInterval(setInter,data.duration)
+            }
+            $('#prev').hover(function () {
+                clearInterval(autoChange);
+            }, function () {
+                autoChangeAgain();
+            }).click(function () {
+                curIndex=(curIndex>0?--curIndex:(imgLen-1));
+                changeTo(curIndex);
+            });
+            $('#next').hover(function () {
+                clearInterval(autoChange);
+            }, function () {
+                autoChangeAgain();
+            }).click(function () {
+                curIndex=(curIndex<imgLen-1)?++curIndex:0;
+                changeTo(curIndex);
+            });
+            $('.indexList').find('li').each(function (item) {
+                $(this).hover(function () {
+                    clearInterval(autoChange);
+                    changeTo(item);
+                    curIndex=item;
+                }, function () {
+                    autoChangeAgain();
+                })
+            })
+            function changeTo(num){
+                var goLeft=num*data.imgWidth;
+                $('.imgList').stop().animate({left:'-'+goLeft+'px'},500);
+                $('.indexList').find('li').removeClass('indexOn').eq(num).addClass('indexOn')
+            }
+            function setCss(){
+                $('#wrapper').css({'width':data.wrapperWidth,'height':data.wrapperHeight});
+                $('#banner').css({'width':data.bannerWidth,'height':data.bannerHeight,'left':(data.wrapperWidth-data.bannerWidth)/2,'top':(data.wrapperHeight-data.bannerHeight)/2});
+                $('.imgList').find('img').each(function () {
+                    $(this).css({'width':data.imgWidth,'height':data.imgHeight});
+                })
+                $('#prev').css({'width':data.btnWidth,'height':data.btnHeight,'top':(data.imgHeight-data.btnHeight)/2,'left':0});
+                $('#next').css({'width':data.btnWidth,'height':data.btnHeight,'top':(data.imgHeight-data.btnHeight)/2,'right':0});
+                $('.imgList').css({'width':$('.imgList li').length*data.imgWidth,'height':data.imgHeight,'left':0});
+                $('.indexList').css({'left':(data.imgWidth-$('.indexList')[0].offsetWidth)/2});
+            }
+            setCss()
+        }
+    })
+
+
+</script>
+</body>
+</html>

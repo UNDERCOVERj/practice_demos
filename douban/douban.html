@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+        一刻 豆瓣每日内容精选
+    </title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <style>
+        body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote {  margin:0;  padding:0  }
+        body{font: 12px 微软雅黑,Helvetica,Arial,sans-serif;width: 100%}
+
+        #header{height: 507px;background: url("img/background.png" ); }
+        #header .top{margin-left:216px;padding-top:92px;display: block }
+        #header #ipwp{margin-top: 82px;margin-left: 216px;height: 155px;width: 158px;float: left;}
+        #header #ipwp .ipwp_1{background: url("img/download.png") no-repeat 0 0;height: 45px;width: 156px}
+        #header #ipwp .ipwp_2{background: url("img/download.png") no-repeat 0 -46px;height: 45px;width: 156px;margin:10px 0px;}
+        #header #ipwp .ipwp_3{background: url("img/download.png") no-repeat 0 -92px;height: 45px;width: 156px}
+        .qrcode{height: 146px;width: 146px;border: 1px solid #1cc4ad;border-radius: 5px;background: #FFFFFF;}
+        .qrcode img{width: 110px;height: 110px;margin-top:18px;margin-left: 18px}
+        #header .qrcode{float:left;margin-left: 80px;margin-top: 82px;}
+        #header .bg_phone{width: 480px;  height: 560px;  position: absolute;  top: 55px;  right: 140px;}
+        #share{margin-left: 245px;margin-top: 18px;position: relative}
+        #share span{ font-size: 14px;  color: #b3b7b1;height:28px;line-height:28px;position: absolute;-moz-user-select: none;-webkit-user-select: none;}
+        #share a{display: inline-block;margin-left: 5px;width: 28px;height: 28px}
+        #share .share_1{background: url("img/share.jpg") no-repeat 0 0;margin-left: 38px }
+        #share .share_2{background: url("img/share.jpg") no-repeat -33px 0 }
+        #share .share_3{background: url("img/share.jpg") no-repeat -66px 0 }
+        #share .share_4{background: url("img/share.jpg") no-repeat -99px 0 }
+        #share .share_5{background: url("img/share.jpg") no-repeat -133px 0 }
+        #share .share_1:hover{background: url("img/share.jpg") no-repeat 0 -28px; margin-left: 38px}
+        #share .share_2:hover{background: url("img/share.jpg") no-repeat -33px -28px; }
+        #share .share_3:hover{background: url("img/share.jpg") no-repeat -66px -28px }
+        #share .share_4:hover{background: url("img/share.jpg") no-repeat -99px -28px }
+        #share .share_5:hover{background: url("img/share.jpg") no-repeat -133px -28px }
+        #content{width: 860px;margin:60px auto 0; }
+        #content h2 {height: 53px;line-height: 53px;font-weight: 800;font-size: 22px;text-align: center;color: #738381;border-bottom: 2px solid #f1f1f2;-moz-user-select: none;-webkit-user-select: none;}
+        #content .content_date{height: 16px;  line-height: 16px;  margin: 30px 0 0 15px;  color: #738381;  font-size: 16px;-moz-user-select: none;-webkit-user-select: none}
+        #content ul{display: block;width: 860px}
+        #content ul li{height:195px;width:380px;display: block;float: left;margin-bottom: 35px}
+        #content ul li:nth-child(odd){margin-right: 96px}
+        #content ul li a{display:block;padding: 10px;text-decoration: none;}
+        #content ul li a:hover{background: rgb(242,250,249)}
+        #content ul li a h3{font-size: 18px;  font-weight: 800;  height: 27px;  line-height: 27px;  color: #1b2522;  text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+        #content ul li a .abstract{margin: 15px 0px;font-size: 14px;  color: #1b2522;  word-wrap: break-word;  overflow: hidden;  text-overflow: ellipsis;line-height: 21px;}
+        #content ul li a .item-footer{margin-top: 22px;height: 28px;line-height: 28px}
+        #content ul li a .item-footer .tag{border: 1px solid  #1cc4ad;padding:0 12px;height:20px;line-height:20px;font-size:12px;border-radius: 3px;color: #1cc4ad;}
+        #content ul li a .item-footer  .link{display: inline-block;  font-size: 13px;  color: #1cc4ad;  float: right;  margin: 4px 8px 0 0;}
+        #content #load{cursor: pointer;clear:both;height: 60px;background-color:#e8f8f7 ;text-align: center;font-size: 18px;line-height: 60px;margin: 50px 0 80px 0;color: #1cc4ad}
+        #foot{height: 346px;background: url("img/background.png");padding-top: 70px}
+        #foot .qrcode {margin: 0 auto;}
+        #foot p{color: #738381;font-size: 18px;text-align: center; font-weight: 800;margin-bottom: 30px;}
+        #foot .client{height: 50px;text-align: center;line-height: 50px;}
+        .apple,.android,.wp{display: inline-block;margin: 0 8px;height: 50px;width: 50px;}
+        .apple{background: url("img/apple.png") no-repeat center;background-size:100%;}
+        .android{background: url("img/android.png") no-repeat center;background-size:100%;}
+        .wp{background: url("img/wp.png") no-repeat center;background-size:100%;}
+         .footer{text-align: center;background: #545651;padding: 0;margin: 0 auto}
+         .footer p{margin: 0;  padding: 1em 0;  color: #b0adad;  font-size: 14px;  font-weight: 300;}
+    </style>
+    <script>
+        window.onload= function () {
+
+        }
+    </script>
+</head>
+<body>
+
+    <div id="header">
+        <img src="img/top.png" alt="top" class="top">
+        <div id="ipwp">
+            <a href="#"><div class="ipwp_1"></div></a>
+            <a href="#"><div class="ipwp_2"></div></a>
+            <a href="#"><div class="ipwp_3"></div></a>
+        </div>
+        <div class="qrcode">
+            <img src="img/qr_code_app.png">
+        </div>
+        <img src="img/bg_phone.png" alt="bg_phone" class="bg_phone">
+    </div>
+    <div id="share">
+        <span>分享</span>
+        <a href="#" class="share_1"></a>
+        <a href="#" class="share_2"></a>
+        <a href="#" class="share_3"></a>
+        <a href="#" class="share_4"></a>
+        <a href="#" class="share_5"></a>
+    </div>
+    <div id="content">
+        <h2>一刻最新内容</h2>
+        <div class="content_date">26Oct</div>
+        <ul>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>洗洗睡｜痴顽者，温柔敦厚之别名也</h3>
+                    <p class="abstract">我决定开始一个系列，记录一下无意间发现的各种哈佛校园秘密。先悄悄说四个。每个月有不固定的几天，凌晨两点到三点之间……</p>
+                    <p class="item-footer">
+
+                        <span class="tag">洗洗睡</span>
+
+                        <span class="link">点击查看</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+        <div id="load" onclick="window.scroll(0,0)">下载一刻,阅读更多</div>
+        <h2>随时随地开启阅读 打发空闲时光</h2>
+        <div><img src="img/bg_footer1.jpg"></div>
+    </div>
+    <div id="foot">
+        <div class="qrcode">
+            <img src="img/qr_code_app.png">
+        </div>
+        <p>扫描二维码下载</p>
+        <div class="client">
+            <a class="apple" href="#"></a>
+            <a class="android" href="#"></a>
+            <a class="wp" href="#"></a>
+        </div>
+
+    </div>
+    <div class="footer">
+        <p class="copyright">
+            ©&nbsp;2005－2016&nbsp;douban.com, all rights reserved<br>
+            北京豆网科技有限公司
+        </p>
+    </div>
+
+</body>
+</html>
